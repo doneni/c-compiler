@@ -126,33 +126,17 @@ int yylex() {
 				ch = getchar();
 			}
 		}
-		return NUMBER;
+		return (NUMBER);
 	}
-	else if(ch == '+') {
-		ch = getchar();
-		return PLUS;
-	}
-	else if(ch == '*') {
-		ch = getchar();
-		return STAR;
-	}
-	else if(ch == '(') {
-		ch = getchar();
-		return LPAREN;
-	}
-	else if(ch == ')') {
-		ch = getchar();
-		return RPAREN;
-	}
-	else if(ch == EOF || ch == '\n') {
-		ch = getchar();
-		return END;
-	}
+	else if(ch == '+') { ch = getchar(); return (PLUS); }
+	else if(ch == '*') { ch = getchar(); return (STAR); }
+	else if(ch == '(') { ch = getchar(); return (LPAREN); }
+	else if(ch == ')') { ch = getchar(); return (RPAREN); }
+	else if(ch == EOF || ch == '\n') { ch = getchar(); return (END); }
 	else {
 		if(ch != '\n')
 			yyerror(2);
 	}
-
 	return -1;
 }
 
