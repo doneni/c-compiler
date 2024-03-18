@@ -61,7 +61,6 @@ int stack[1000];
 int top = -1;
 int sym;
 
-char yytext[32];
 static number value[1000];
 static number yylval;
 
@@ -159,14 +158,13 @@ void reduce(int i) {
 
 	switch(i) {
 		case 1:
-			if(value[old_top + 1].type == FLT || value[old_top + 3].type == FLT) {
+			if (value[old_top + 1].type == FLT || value[old_top + 3].type == FLT) {
 				value[top].type = FLT;
 				value[top].value.f = ((value[old_top + 1].type == FLT) ? value[old_top + 1].value.f : value[old_top + 1].value.i)
-										+ ((value[old_top + 3].type == FLT) ? value[old_top + 3].value.f : value[old_top + 3].value.i);
-			}
-			else {
+									+ ((value[old_top + 3].type == FLT) ? value[old_top + 3].value.f : value[old_top + 3].value.i);
+			} else {
 				value[top].type = INT;
-				value[top].value.i = value[old_top + 1].value.i + value[old_top + 3].value.i; 
+				value[top].value.i = value[old_top + 1].value.i + value[old_top + 3].value.i;
 			}
 			break;
 		case 2:
@@ -181,7 +179,8 @@ void reduce(int i) {
 			else {
 				value[top].type = INT;
 				value[top].value.i = value[old_top + 1].value.i * value[old_top + 3].value.i; 
-			}			break;
+			}
+			break;
 		case 4:
 			value[top] = value[old_top + 1];
 			break;
