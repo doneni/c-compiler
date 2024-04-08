@@ -78,7 +78,7 @@ init_declarator:
     ;
 
 initializer:
-    constant_expression
+    assignment_expression
     |LR initializer_list RR
     ;
 
@@ -270,7 +270,7 @@ constant_expression_opt:
     ;
 
 constant_expression:
-    expression
+    assignment_expression
     ;
 
 expression:

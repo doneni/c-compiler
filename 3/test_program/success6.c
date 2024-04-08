@@ -6,7 +6,3 @@ union T{
     int t_i;
     float t_f;
 };
-int main(void) {
-    s s1;
-    return 0;
-}
