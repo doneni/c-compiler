@@ -388,7 +388,7 @@ type_name:
 extern char* yytext;
 int yyerror(char* s)
 {
-    printf("%s near %s\n", s, yytext);
+    printf("line %d: %s near %s\n", line_no, s, yytext);
     exit(1);
 }
 
