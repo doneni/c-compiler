@@ -1,24 +1,5 @@
 #include "type.h"
-#include <stdio.h>
-
-void print_ast(A_NODE *);
-void prt_program(A_NODE *, int);
-
-void prt_initializer(A_NODE *, int);
-void prt_arg_expr_list(A_NODE *, int);
-void prt_statement(A_NODE *, int);
-void prt_statement_list(A_NODE *, int);
-void prt_for_expression(A_NODE *, int);
-void prt_expression(A_NODE *, int);
-void prt_A_TYPE(A_TYPE *, int);
-void prt_A_ID_LIST(A_ID *, int);
-void prt_A_ID(A_ID *, int);
-void prt_A_ID_NAME(A_ID *, int);
-void prt_STRING(char *, int);
-void prt_integer(int, int);
-
-void print_node(A_NODE *,int);
-void print_space(int);
+#include "supporting_func.h"
 
 char * node_name[] = {
 	"N_NULL",
@@ -90,7 +71,7 @@ extern A_TYPE *int_type, *float_type, *char_type, *void_type, *string_type;
 void print_node(A_NODE *node, int s)
 {
 	print_space(s);
-	printf("%s \n", node_name[node->name]);
+	printf("%s\n", node_name[node->name]);
 }
 
 void print_space(int s)
@@ -347,9 +328,9 @@ void prt_A_TYPE(A_TYPE *t, int s)
 	else if (t==char_type) 
 		printf("(char %d)\n",t->size);
 	else if (t==void_type)
-		printf("(void)\n");
+		printf("(void)");
 	else if (t->kind==T_NULL)
-		printf("(null)\n");
+		printf("(null)");
 	else if (t->prt)
 		printf("(DONE:%x)\n",t);
 	else 

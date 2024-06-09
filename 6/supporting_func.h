@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef SUPPORT_H
+#define SUPPORT_H
+
 #include "type.h"
-#include "y.tab.h"
 
 A_NODE *makeNode(NODE_NAME, A_NODE *, A_NODE *, A_NODE *);
 A_NODE *makeNodeList(NODE_NAME, A_NODE *, A_NODE *);
@@ -9,17 +9,17 @@ A_ID *makeIdentifier(char *);
 A_ID *makeDummyIdentifier();
 A_TYPE *makeType(T_KIND);
 A_SPECIFIER *makeSpecifier(A_TYPE *, S_KIND);
-A_ID *searchIdentifier(char * , A_ID *);
+A_ID *searchIdentifier(char *, A_ID *);
 A_ID *searchIdentifierAtCurrentLevel(char *, A_ID *);
 A_SPECIFIER *updateSpecifier(A_SPECIFIER *, A_TYPE *, S_KIND);
 void checkForwardReference();
 void setDefaultSpecifier(A_SPECIFIER *);
 A_ID *linkDeclaratorList(A_ID *, A_ID *);
 A_ID *getIdentifierDeclared(char *);
-A_TYPE *getTypeOfStructOrEnumRefIdentifier(T_KIND, char *, ID_KIND);
+A_TYPE *getTypeOfStructOrEnumReIdentifier(T_KIND, char *, ID_KIND);
 A_ID *setDeclaratorInit(A_ID *, A_NODE *);
 A_ID *setDeclaratorKind(A_ID *, ID_KIND);
-A_ID *setDeclaratorType(A_ID *, A_TYPE*);
+A_ID *setDeclaratorType(A_ID *, A_TYPE *);
 A_ID *setDeclaratorElementType(A_ID *, A_TYPE *);
 A_ID *setDeclaratorTypeAndKind(A_ID *, A_TYPE *, ID_KIND);
 A_ID *setDeclaratorListSpecifier(A_ID *, A_SPECIFIER *);
@@ -33,8 +33,12 @@ A_TYPE *setTypeField(A_TYPE *, A_ID *);
 A_TYPE *setTypeExpr(A_TYPE *, A_NODE *);
 A_TYPE *setTypeAndKindOfDeclarator(A_TYPE *, ID_KIND, A_ID *);
 A_TYPE *setTypeStructOrEnumIdentifier(T_KIND, char *, ID_KIND);
-BOOLEAN isNotSameFormalParameter(A_ID *, A_ID *);
+BOOLEAN isNotSameFormalParameters(A_ID *, A_ID *);
 BOOLEAN isNotSameType(A_TYPE *, A_TYPE *);
 BOOLEAN isPointerOrArrayType(A_TYPE *);
-void syntax_error();
+void checkVoidParamName(A_ID *);
+void checkVoidParam(A_ID *);
+void syntax_error(int i, char *s);
 void initialize();
+
+#endif
