@@ -1,6 +1,6 @@
-char foo()
+char foo(void)
     return 'b';
-int main() {
+int main(void) {
     int a = 0;
     char b = foo();
 }

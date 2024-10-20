@@ -1,5 +1,9 @@
 #include <stdio.h>
-#include "type.h"
+#include <stdlib.h>
+#include "y.tab.h"
+#include "supporting_func.h"
+#include "print.h"
+
 extern int syntax_err;
 extern A_NODE * root;
 

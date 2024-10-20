@@ -3,18 +3,20 @@
 #include "y.tab.h"
 #include "supporting_func.h"
 #include "print.h"
+#include "print_sem.h"
 
 extern int syntax_err;
+extern int semantic_err;
 extern A_NODE *root;
 
-void main() 
+void main()
 {
     initialize();
-    printf("initializing...\n");
     yyparse();
-    printf("parsing...\n");
-    if(syntax_err) exit(1);
+    if (syntax_err) exit(1);
     print_ast(root);
-    printf("done!\n");
+    semantic_analysis(root);
+    if (semantic_err) exit(1);
+    print_sem_ast(root);
     exit(0);
 }
